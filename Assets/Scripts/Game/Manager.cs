@@ -49,6 +49,7 @@ public class Manager : Singleton<Manager>
         if(!movePlayer )
         {
             m_currentPlayer.MyTurn(ThrowDice());
+            movePlayer = true;
         }
     }
     // public void Reroll()

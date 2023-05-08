@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour
     public bool endTile;
     public bool homeTile;
     public bool turnTile;
+    public bool initialized;
     private SpriteRenderer sprite;
     protected Animator anime;
     [SerializeField] protected TileType m_tiletype;
@@ -39,7 +40,10 @@ public class Tile : MonoBehaviour
                 Debug.Log(this);
             }
             m_nextTile.tile = foundNeighbor;
-            StartCoroutine(m_nextTile.tile.InitializeTile());
+            if(m_nextTile.tile.nextTile == null)
+            {
+                StartCoroutine(m_nextTile.tile.InitializeTile());
+            }
         }
     }
     public virtual IEnumerator InitializeTile()
